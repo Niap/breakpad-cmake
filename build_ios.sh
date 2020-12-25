@@ -1,6 +1,7 @@
 cmake=/Applications/CMake.app/Contents/bin/cmake
 pwd=$(pwd)
 
+##PLATFORM can be OS64 / SIMULATOR64
 
 TOOLCHAIN="$pwd/ios.toolchain.cmake"
 
@@ -15,7 +16,7 @@ rm -rf build
 $cmake $CMAKE_ARGUMENTS \
    -B build \
    -DCMAKE_BUILD_TYPE=Debug \
-   -DPLATFORM=SIMULATOR64 \
+   -DPLATFORM=OS64 \
    .
 
 cd build
