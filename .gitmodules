@@ -1,0 +1,3 @@
+[submodule "breakpad"]
+	path = breakpad
+	url = https://chromium.googlesource.com/breakpad/breakpad
