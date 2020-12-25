@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 3.6)
+
+
+project("breakpad-cmake")
+set(CMAKE_CXX_STANDARD 17)
+
+MESSAGE("operation system is ${CMAKE_SYSTEM}")
+
+IF (CMAKE_SYSTEM_NAME MATCHES "iOS")
+set(SOURCE_FILE 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/exception_handler.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/minidump_generator.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/dynamic_images.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/string_utilities.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/minidump_file_writer.cc" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/breakpad_nlist_64.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/file_id.cc" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_id.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_walker.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_utilities.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/md5.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/string_conversion.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/convert_UTF.cc")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+set(SOURCE_FILE 
+    "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/exception_handler.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/minidump_generator.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/dynamic_images.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/string_utilities.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/minidump_file_writer.cc" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/breakpad_nlist_64.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/file_id.cc" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_id.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_walker.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/macho_utilities.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/md5.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/string_conversion.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/convert_UTF.cc"
+)
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "iOS")
+add_library(breakpad STATIC 
+  ${SOURCE_FILE}
+)
+
+target_include_directories(breakpad
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src
+)
