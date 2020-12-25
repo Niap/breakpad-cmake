@@ -36,6 +36,9 @@ set(SOURCE_FILE
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/md5.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/string_conversion.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/convert_UTF.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/MachIPC.mm"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/crash_generation/crash_generation_client.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/bootstrap_compat.cc"
 )
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "iOS")
 add_library(breakpad STATIC 
