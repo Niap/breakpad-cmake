@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 MESSAGE("operation system is ${CMAKE_SYSTEM}")
 
 IF (CMAKE_SYSTEM_NAME MATCHES "iOS")
+ADD_DEFINITIONS(-DUSE_PROTECTED_ALLOCATIONS=0)
 set(SOURCE_FILE 
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/exception_handler.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/minidump_generator.cc"
