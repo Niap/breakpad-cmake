@@ -23,7 +23,7 @@ set(SOURCE_FILE
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/convert_UTF.cc")
 ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Darwin")
 set(SOURCE_FILE 
-    "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/exception_handler.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/exception_handler.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/minidump_generator.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/mac/handler/dynamic_images.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/mac/string_utilities.cc"
