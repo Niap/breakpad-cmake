@@ -65,7 +65,13 @@ set(SOURCE_FILE
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/linux/memory_mapped_file.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/linux/safe_readlink.cc"
 )
-
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+ADD_DEFINITIONS(-DUNICODE)
+set(SOURCE_FILE 
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/windows/handler/exception_handler.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/windows/crash_generation/crash_generation_client.cc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/windows/guid_string.cc"
+)
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "iOS")
 add_library(breakpad STATIC 
   ${SOURCE_FILE}
