@@ -67,6 +67,8 @@ set(SOURCE_FILE
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/common/linux/safe_readlink.cc"
 )
 ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zc:wchar_t-")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zc:wchar_t-")
 ADD_DEFINITIONS(-DUNICODE)
 set(SOURCE_FILE 
   "${CMAKE_CURRENT_SOURCE_DIR}/breakpad/src/client/windows/handler/exception_handler.cc"
